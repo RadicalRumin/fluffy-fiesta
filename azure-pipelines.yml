@@ -20,9 +20,9 @@ steps:
     sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
     sudo composer global require "phpunit/phpunit:${{ variables.PHPUNIT_VERSION }}"
 
-    if [ ! -L "/usr/local/bin/phpunit" ]; then
-    sudo ln -s /root/.composer/vendor/bin/phpunit /usr/local/bin/phpunit
-    fi
+  # if [ ! -L "/usr/local/bin/phpunit" ]; then
+  # sudo ln -s /root/.composer/vendor/bin/phpunit /usr/local/bin/phpunit
+  # fi
   displayName: 'Install PHP and Composer'
 
 - script: |
