@@ -42,6 +42,7 @@ steps:
   displayName: 'Installing Package Dependencies'
 
 - script: |
+    php artisan config:clear
     php artisan key:generate
     php artisan migrate
   displayName: 'Running Migrations'
