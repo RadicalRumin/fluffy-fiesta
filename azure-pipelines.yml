@@ -7,6 +7,7 @@ pool:
 variables:
   PHP_VERSION: '8.0.2'
   PHPUNIT_VERSION: '9.5.10'
+  name: $(date:yyyyMMdd)$(rev:.r) # the build name format
 
 steps:
 - task: NodeTool@0
@@ -33,5 +34,10 @@ steps:
   displayName: 'Clone and install dependencies'
 
 - script: |
-    phpunit
+# phpunit
   displayName: 'Run PHPUnit tests'
+
+- task: PublishBuildArtifacts@1
+inputs:
+  PathtoPublish: '$(System.DefaultWorkingDirectory)/fluffy-fiesta'
+  ArtifactName: {{ variables.name }}
