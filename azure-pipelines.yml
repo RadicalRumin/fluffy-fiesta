@@ -24,8 +24,8 @@ steps:
 
 - script: |
     sudo apt-get install -y git
-    git clone https://github.com/{your-repository}.git
-    cd {your-repository}
+    git clone https://github.com/RadicalRumin/fluffy-fiesta.git
+    cd /fluffy-fiesta
     composer install
   displayName: 'Clone and install dependencies'
 
