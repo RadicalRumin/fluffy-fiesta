@@ -1,10 +1,8 @@
-# PHP
-# Test and package your PHP project.
-# Add steps that run tests, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/php
+trigger:
+  - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'Ubuntu-Latest'
 
 variables:
   PHP_VERSION: '8.0.2'
@@ -17,17 +15,17 @@ steps:
 
 - script: |
     sudo apt-get update
-    sudo apt-get install -y php${{ env.PHP_VERSION }} php${{ env.PHP_VERSION }}-cli php${{ env.PHP_VERSION }}-mbstring unzip
+    sudo apt-get install -y php${{ variables.PHP_VERSION }} php${{ variables.PHP_VERSION }}-cli php${{ variables.PHP_VERSION }}-mbstring unzip
     curl -sS https://getcomposer.org/installer -o composer-setup.php
     sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-    sudo composer global require "phpunit/phpunit:${{ env.PHPUNIT_VERSION }}"
+    sudo composer global require "phpunit/phpunit:${{ variables.PHPUNIT_VERSION }}"
     sudo ln -s /root/.composer/vendor/bin/phpunit /usr/local/bin/phpunit
   displayName: 'Install PHP and Composer'
 
 - script: |
     sudo apt-get install -y git
-    git clone https://github.com/RadicalRumin/fluffy-fiesta.git
-    cd fluffy-fiesta
+    git clone https://github.com/{your-repository}.git
+    cd {your-repository}
     composer install
   displayName: 'Clone and install dependencies'
 
