@@ -31,9 +31,9 @@ steps:
     mysql --version
   displayName: 'MySQL Version'
 
-- script: |
-    cp .env
-  displayName: 'Environment Setup'
+# - script: |
+#     cp .env
+#   displayName: 'Environment Setup'
 
 - script: |
     sudo composer self-update
